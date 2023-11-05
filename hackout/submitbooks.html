@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDYHUB</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial;
+            margin: 5px;
+            }
+
+        .submit-books{
+            background-color:#4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s; /* Animation duration */
+        }
+
+        form{
+            width: 70%;
+            height: auto;
+            margin: 0 auto;
+            overflow: hidden;
+            clear: both;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            padding: 1em;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input[type=text], select, textarea, input[type=number], input[type=date] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+         button{
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s; /* Animation duration */
+         }
+
+         .recents{
+            float: right;
+            top: -10px;
+            z-index: 1;
+            border: 2px solid black;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            padding: 1em;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 400px;
+            margin-right: 20%;
+            min-height: 70px;
+            height: auto;
+            transition: all 0.3s ease-in-out;
+         }
+
+         .bg{
+            background-color: white;
+            height: 50vh;
+            width: 80%;
+            margin: 0 auto;
+            overflow-y: auto;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            color: #4CAF50;
+         }
+
+         .bg h2{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 24px;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            color: #000000;
+            text-align: center;
+         }
+        
+           .hr {
+            width: 50%; /* This ensures the hr tag spans the entire width of the container */
+            height: 2px; /* You can adjust the height of the hr tag here */
+            background-color: #000; /* You can change the color of the hr tag here */
+            rotate: 90deg;   
+        }
+
+        ul.breadcrumb {
+            padding: 10px 16px;
+            list-style: none;
+            background-color: #eee;
+          }
+          ul.breadcrumb li {
+            display: inline;
+            font-size: 18px;
+          }
+          ul.breadcrumb li+li:before {
+            padding: 8px;
+            color: black;
+            content: "/\00a0";
+          }
+          ul.breadcrumb li a {
+            color: #0275d8;
+            text-decoration: none;
+          }
+          ul.breadcrumb li a:hover {
+            color: #01447e;
+            text-decoration: underline;
+          }
+          
+          .alert {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #36bef4;
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 3px;
+          }  
+    </style>
+</head>
+<body>
+    <ul class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="borrowbooks.html">Rent</a></li>
+        <li>Return Books</li>
+      </ul>
+
+         <div class="submit-books" style="float: left;">
+                 <h2>Return Books</h2>
+                <form id="returnform">
+                    <label for="bname">Book Name:</label>
+                    <input type="text" id="bname" name="bname" placeholder="Book Name"><br/>
+                    <label for="author">Author Name:</label>
+                    <input type="text" id="author" name="author" placeholder="Author Name"><br/>
+                    <label for="orderid">Order ID:</label>
+                    <input type="number" id="oid" name="oid" placeholder="Order ID"><br/>
+                    <label for="dop">Date Of Purchase:</label>
+                    <input type="date" id="dop" name="dop"><br/>
+                    <label for="dor">Date Of Return:</label>
+                    <input type="date" id="dor" name="dor"><br/>
+                    <label for="review">Review:</label>
+                    <textarea rows="4" cols="50" id="review" name="review" placeholder="Submit Your Review"></textarea><br/>
+                    <button id="fineButton" style="display: none;">Fine</button>
+                    <button type="submit" id="submit">Submit Book</button>
+                </form>
+                <div id="alertMessage" class="alert" style="display: none;"></div>
+            </div>
+
+        <div class="recents">
+            <div class="bg">
+                <div id="bookList">
+            <h2>Recent Submissions</h2>
+            <?php foreach ($recent as $book): ?>    
+            <p>Book Name :<?= $book['name'] ?></p>
+            <p>Author Name :<?= $book['author'] ?></p>
+            <p>Date Of Purchase :<?= $book['dop'] ?></p>
+            <p>Date Of Return :<?= $book['dor'] ?></p>
+            <hr />
+            <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+
+    <script>
+        // Initialize Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyCe41-R3bz71YIu0bWLFS-0DLKNIQz7ns0",
+        authDomain: "librarym-ad227.firebaseapp.com",
+        projectId: "librarym-ad227",
+        storageBucket: "librarym-ad227.appspot.com",
+        messagingSenderId: "212050612577",
+        appId: "1:212050612577:web:db5663d50d0e8049c5f520"
+      };
+            
+            firebase.initializeApp(firebaseConfig);
+            
+            // Get a reference to the Firebase database
+            var database = firebase.database();
+            
+            // Function to handle form submission
+            function submitForm(e) {
+              e.preventDefault();
+            
+              // Get form values
+              var bname = document.getElementById("bname").value;
+              var author = document.getElementById("author").value;
+              var oid = document.getElementById("oid").value;
+              var dop = document.getElementById("dop").value;
+              var dor = document.getElementById("dor").value;
+              var review = document.getElementById("review").value;
+            
+              // Save the form data to Firebase
+              database.ref("returnfeed").push().set({
+                bname:bname,
+                author:author,
+                oid:oid,
+                dop:dop,
+                dor:dor,
+                review:review
+              });
+            
+              // Reset the form
+              document.getElementById("returnform").reset();
+            
+               // Hide the form after submission
+               document.getElementById("returnform").style.display = "none";
+            
+            // Display success message
+            var alertMessage = document.getElementById("alertMessage");
+            alertMessage.innerHTML = "Thanks For Your Support 💐💐!!";
+            alertMessage.style.display = "block";
+            }
+            
+            // Attach the submitForm function to the form's submit event
+            document.getElementById("returnform").addEventListener("submit", submitForm);   
+            
+
+        // Reference to the "books" node in your database
+        const booksRef = database.ref('returnfeed');
+    </script>
+</body>
+</html>

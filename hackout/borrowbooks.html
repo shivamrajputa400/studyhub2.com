@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Now</title>
+    
+    <link rel="stylesheet" href="front.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <style>
+        /* Add a CSS animation for the button */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .alert {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgb(212, 18, 57);
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 3px;
+            animation: pulse 1s infinite;
+          }  
+
+          .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+          }
+          
+          .price {
+            color: grey;
+            font-size: 22px;
+          }
+          
+          .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+          }
+          
+          .card button:hover {
+            opacity: 0.7;
+          }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="https://n4.sdlcdn.com/imgs/i/h/e/Rich-Dad-Poor-Dad-Paperback-SDL880837687-1-1f528.jpeg" alt="Denim Jeans" style="width:100%">
+        <h1>continue to order</h1>
+        <p class="price">$19.99</p>
+        <p>here your selected items</p>
+    <button id="orderButton" onclick="placeOrder()">Order Now</button>
+    </div>
+    <!-- Display alert -->
+    <div id="alertMessage" class="alert" style="display: none;"></div>
+    <section id="product">
+        <h2 style="text-align:center; font-size:32px; padding:5px;">BOOKS</h2>
+        <div class="responsive">
+        <div class="gallery">
+            <img src="https://n4.sdlcdn.com/imgs/i/h/e/Rich-Dad-Poor-Dad-Paperback-SDL880837687-1-1f528.jpeg" alt="book1" width="600" height="400">
+            <h1>RICH DAD POOR DAD</h1>
+              <p class="price">$19.99</p>
+          <span style="font-size:19px;">Author:</span>   
+          <p>ROBERT T.KIYOSAKI</p>
+          <button id="orderButton" onclick="placeOrder()">Order Now</button>
+        </div>
+      </div>
+      
+      
+      <div class="responsive">
+        <div class="gallery">
+            <img src="https://i1.wp.com/www.mrdhukkad.com/wp-content/uploads/2019/06/4-1.jpg?ssl=1" alt="Book2" width="500" height="100">
+          <h1>LIFE'S AMAZING SECRETS</h1>
+              <p class="price">$19.99</p>
+          <span style="font-size:19px">Author:</span>
+              <p>GAUR GOPAL DAS</p>
+          <button id="orderButton" onclick="placeOrder()">Order Now</button>
+        </div>
+      </div>
+      
+      <div class="responsive">
+        <div class="gallery">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/81gFGNtsFXL.jpg" alt="Book3" width="600" height="400">
+            <h1>THE MOTIVATIONAL MYTH</h1>
+              <p class="price">$19.99</p>
+          <span style="font-size:19px">Author:</span>
+              <p>JEFF HADEN</p>
+          <button id="orderButton" onclick="placeOrder()">Order Now</button>
+        </div>
+      </div>
+      
+      <div class="responsive">
+        <div class="gallery">
+            <img src="https://fourminutebooks.com/wp-content/uploads/2016/06/best-motivational-books-29.jpg" alt="Book4" width="600" height="400">
+           <h1>ZERO TO ONE</h1>
+              <p class="price">$12.45</p>
+          <span style="font-size:19px">Author:</span>
+              <p>PETER THIEL</p>
+          <button id="orderButton" onclick="placeOrder()">Order Now</button>
+        </div>
+      </div>
+        
+      <div class="clearfix"></div>
+        <div id="alertMessage" class="alert" style="display: none;"></div>
+    </section>
+      <script>
+        // Firebase configuration
+              const firebaseConfig = {
+                  apiKey: "AIzaSyCe41-R3bz71YIu0bWLFS-0DLKNIQz7ns0",
+                  authDomain: "librarym-ad227.firebaseapp.com",
+                  projectId: "librarym-ad227",
+                  storageBucket: "librarym-ad227.appspot.com",
+                  messagingSenderId: "212050612577",
+                  appId: "1:212050612577:web:db5663d50d0e8049c5f520"
+                };
+      
+              // Initialize Firebase
+              const firebaseApp = firebase.initializeApp(firebaseConfig);
+      
+              // JavaScript function to generate order ID and show an alert message
+              function placeOrder() {
+                  // Generate the order ID
+                  function generateOrderID(length) {
+                      const characters = '0123456789';
+                      let orderID = '';
+                      for (let i = 0; i < length; i++) {
+                          const randomIndex = Math.floor(Math.random() * characters.length);
+                          orderID += characters.charAt(randomIndex);
+                      }
+                      return orderID;
+                  }
+      
+                  const orderID = generateOrderID(8);
+      
+                  // Get the current date
+                  const currentDate = new Date();
+                  const dateOfPurchase = currentDate.toISOString();
+      
+                  // Display the order ID with the date of purchase
+                  const alertMessage = `Order Placed!\nOrder ID: ${orderID}\nDate of Purchase: ${dateOfPurchase}`;
+      
+                  alert(alertMessage);
+      
+                  // Add the animation class to the button
+                  const orderButton = document.getElementById("orderButton");
+                  orderButton.classList.add("alert");
+      
+                  // Reference to your Firebase database
+                  const database = firebase.database();
+      
+                  // Define the order data
+                  const orderData = {
+                      orderID: orderID,
+                      dateOfPurchase: dateOfPurchase,
+                      // Add other order details here
+                  };
+      
+                  // Push the order data to the database under an "orders" node
+                  database.ref('orders').push(orderData, (error) => {
+                      if (error) {
+                          console.error("Error writing to Firebase:", error);
+                      } else {
+                          console.log("Order data has been successfully written to Firebase.");
+                      }
+                  });
+              }
+            </script>
+</body>
+</html>
+
+order placing

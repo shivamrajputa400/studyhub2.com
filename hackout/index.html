@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="front.css">
+  <title>STUDY HUB</title>
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<body>
+  <!-- Header HAI YE @shivamrajputa400 -->
+  <nav>
+ <div class="wrapper">
+
+   
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1>📚STUDY<span>HUB</span></h1>
+          </a>
+        </div>
+        <div class="topnav">
+            <input type="text" placeholder="Search..">
+         </div>
+        <div class="nav-list">
+
+          <div class="hamburger">
+           
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <ul class="nav-links">
+                
+                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+                <li>
+                  <a href="#" class="desktop-item">Mega Menu</a>
+                  <input type="checkbox" id="showMega">
+                  <label for="showMega" class="mobile-item">Mega Menu</label>
+                  <div class="mega-box">
+                    <d class="content">
+                      <div class="row">
+                        
+                      </div>
+                      <div class="row">
+                        <header>PHOTOCOPY</header>
+                        <ul class="mega-links">
+                          <li><a href="#"></a></li>
+                        </ul>
+                      </div>
+                      <div class="row">
+                        <header>BOOKS</header>
+                        <ul class="mega-links">
+                          <li><a href="borrowbooks.html">BORROW BOOKS</a></li>
+                          <li><a href="submitbooks.html">SUBMIT BOOKS</a></li>
+                          <li><a href="newbooks.html">NEW BOOKS</a></li>
+                          <li><a href="yourbooks.html">YOUR BOOKS</a></li>
+                        </ul>
+                      </div>
+                     
+                      <div class="row">
+                        <header>STATIONARY</header>
+                        <ul class="mega-links">
+                          <li><a href="STATIONARY.html">ALL</a></li>
+                        </ul>
+                      </div>
+                      <div class="row">
+                        <header>PROJECTS</header>
+                        <ul class="mega-links">
+                          <li><a href="takeprojects.html">TAKE PROJECTS</a></li>
+                          <li><a href="giveprojects.html">GIVE PROJECTS</a></li>
+                          <li><a href="yourproject.html">YOUR PROJECTS</a></li>
+
+                        </ul>
+                      </div>
+                      
+                  </div>
+                </li>
+            <li><a href="index.html" data-after="Home">Home</a></li>
+            <li><a href="front.html" data-after="MY DASHBOARD">MY DASHBOARD</a></li>
+            <li><a href="#services" data-after="Service">About Us</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+            <li><a href="FEEDBACK.HTML">Feedback</a></li>
+            <li><a href="RESISTRATION.HTML" data-after="register/login">REGISTER/LOGIN</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</nav>
+
+  <!-- End Header @shivamrajputa400-->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Welcome,TO STUDY<span> </span>HUB</h1>
+        <br>
+       
+		</div>
+      
+		</form>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero Section  @shivamrajputa400-->
+   <marque></marque>
+<br>
+<br>
+<!--- Products ----->
+<section id="product">
+  <h2 style="text-align:center; font-size:32px; padding:5px;">BOOKS</h2>
+  <div class="responsive">
+  <div class="gallery">
+      <img src="https://n4.sdlcdn.com/imgs/i/h/e/Rich-Dad-Poor-Dad-Paperback-SDL880837687-1-1f528.jpeg" alt="book1" width="600" height="400">
+      <h1>RICH DAD POOR DAD</h1>
+        <p class="price">$19.99</p>
+    <span style="font-size:19px;">Author:</span>   
+    <p>ROBERT T.KIYOSAKI</p>
+    <button id="orderButton" onclick="placeOrder()">Order Now</button>
+  </div>
+</div>
+
+
+<div class="responsive">
+  <div class="gallery">
+      <img src="https://i1.wp.com/www.mrdhukkad.com/wp-content/uploads/2019/06/4-1.jpg?ssl=1" alt="Book2" width="500" height="100">
+    <h1>LIFE'S AMAZING SECRETS</h1>
+        <p class="price">$19.99</p>
+    <span style="font-size:19px">Author:</span>
+        <p>GAUR GOPAL DAS</p>
+    <button id="orderButton" onclick="placeOrder()">Order Now</button>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/81gFGNtsFXL.jpg" alt="Book3" width="600" height="400">
+      <h1>THE MOTIVATIONAL MYTH</h1>
+        <p class="price">$19.99</p>
+    <span style="font-size:19px">Author:</span>
+        <p>JEFF HADEN</p>
+    <button id="orderButton" onclick="placeOrder()">Order Now</button>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+      <img src="https://fourminutebooks.com/wp-content/uploads/2016/06/best-motivational-books-29.jpg" alt="Book4" width="600" height="400">
+     <h1>ZERO TO ONE</h1>
+        <p class="price">$12.45</p>
+    <span style="font-size:19px">Author:</span>
+        <p>PETER THIEL</p>
+    <button id="orderButton" onclick="placeOrder()">Order Now</button>
+  </div>
+</div>
+  
+<div class="clearfix"></div>
+  <div id="alertMessage" class="alert" style="display: none;"></div>
+</section>
+
+ >
+   <marque></marque>
+  <!-- About Us Section @shivamrajputa400v-->
+  <section id="services">
+    <div class="services container">
+      <div class="service-top">
+        <h1 class="section-title"><span>ABOUT</span>US</h1>
+        <h2>We "TEAM BUG" are here to help and resolve the problems of todays students, there is huge mismatch of various things in every students life that becomes barrier in there overnight success. we have made the  website  which provides room to purchase stationery items at cheaper details. we have overnight courier service avilable for stationary and photocopies.
+            Also we will provide the much expensive books to the people who can't afford it. This will be carried out through courier services at minimal costs. The books will be provided by the people who had it and have read it and is no more of use to him/her. He/she in turn will get the rent for that book.
+            
+        </h2>
+      </div>
+      <div class="service-bottom">
+        <div class="service-item">
+          <div class="icon"><img src="SR.jpeg" /></div>
+          <h2>SHIVAM RAJPUT</h2>
+          <p>STUDENT AT ABESIT COLLEG OF ENGENEERING , PURSUING B.TECH IN COMPUTER SCIENCE AND ENGENEERING. A WEB DEVELOPER WITH PYTHON SQL CONNECTIVITY.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="AS.jpeg" /></div>
+          <h2>ARYAN SHUKLA</h2>
+          <p>STUDENT AT ABESIT COLLEG OF ENGENEERING , PURSUING B.TECH IN COMPUTER SCIENCE AND ENGENEERING. A WEB DEVELOPER WITH PYTHON SQL CONNECTIVITY.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="SIDJ.png" /></div>
+          <h2>SIDDHANT JAIN</h2>
+          <p>STUDENT AT ABESIT COLLEG OF ENGENEERING , PURSUING B.TECH IN COMPUTER SCIENCE AND ENGENEERING. A FONTEND DEVELOPER WITH PYTHON SQL CONNECTIVITY.</p>
+        
+      </div>
+      <div class="service-bottom">
+        <div class="service-item">
+          <div class="icon"><img src="AK.png" /></div>
+          <h2>AKSHIT KUMAR</h2>
+          <p>STUDENT AT ABESIT COLLEG OF ENGENEERING , PURSUING B.TECH IN COMPUTER SCIENCE AND ENGENEERING. A FONTEND DEVELOPER WITH PYTHON SQL CONNECTIVITY.</p>
+        </div>
+    </div>
+  </section>
+  <!-- End Service Section @shivamrajputa400-->
+
+
+  <!-- Contact Section @shivamrajputa400-->
+  <section id="contact">
+    <div class="contact container">
+      <div>
+        <h1 class="section-title">Contact <span>info</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+1 234 123 1234</h2>
+            <h2>+1 234 123 1234</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+          <div class="contact-info">
+            <h1>Email ID</h1>
+            <h2>info@gmail.com</h2>
+            <h2>abcd@gmail.com</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>GHAZIABAD</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section @shivamrajputa400-->
+
+  <!-- Footer @shivamrajputa400-->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>📚STUDY</span>HUB</span></h1>
+      </div>
+      <h2>Your Complete study Solution</h2>
+      <p>Copyright © TEAM BUG. All rights reserved</p>
+    </div>
+  </section>
+  <!-- End Footer @shivamrajputa400 -->
+  <script>
+  // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCe41-R3bz71YIu0bWLFS-0DLKNIQz7ns0",
+            authDomain: "librarym-ad227.firebaseapp.com",
+            projectId: "librarym-ad227",
+            storageBucket: "librarym-ad227.appspot.com",
+            messagingSenderId: "212050612577",
+            appId: "1:212050612577:web:db5663d50d0e8049c5f520"
+          };
+
+        // Initialize Firebase
+        const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+        // JavaScript function to generate order ID and show an alert message
+        function placeOrder() {
+            // Generate the order ID
+            function generateOrderID(length) {
+                const characters = '0123456789';
+                let orderID = '';
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * characters.length);
+                    orderID += characters.charAt(randomIndex);
+                }
+                return orderID;
+            }
+
+            const orderID = generateOrderID(8);
+
+            // Get the current date
+            const currentDate = new Date();
+            const dateOfPurchase = currentDate.toISOString();
+
+            // Display the order ID with the date of purchase
+            const alertMessage = `Order Placed!\nOrder ID: ${orderID}\nDate of Purchase: ${dateOfPurchase}`;
+
+            alert(alertMessage);
+
+            // Add the animation class to the button
+            const orderButton = document.getElementById("orderButton");
+            orderButton.classList.add("alert");
+
+            // Reference to your Firebase database
+            const database = firebase.database();
+
+            // Define the order data
+            const orderData = {
+                orderID: orderID,
+                dateOfPurchase: dateOfPurchase,
+                // Add other order details here
+            };
+
+            // Push the order data to the database under an "orders" node
+            database.ref('orders').push(orderData, (error) => {
+                if (error) {
+                    console.error("Error writing to Firebase:", error);
+                } else {
+                    console.log("Order data has been successfully written to Firebase.");
+                }
+            });
+        }
+      </script>
+</body>
+
+</html>
